@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeAI</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">⚡ CodeAI</div>
+    <button class="new-chat" onclick="newChat()">+ Nouvelle discussion</button>
+    <div class="side-label">Outils</div>
+    <button class="side-btn">💻 Générer du code</button>
+    <button class="side-btn">🐛 Corriger un bug</button>
+    <button class="side-btn">🧪 Créer des tests</button>
+    <div class="side-bottom">
+      <button class="side-btn">⚙️ Paramètres</button>
+      <button class="side-btn admin">🔐 Administration</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header>
+      <div>
+        <h1>CodeAI</h1>
+        <p>Ton assistant pour programmer.</p>
+      </div>
+      <span class="status"><i></i> En ligne</span>
+    </header>
+
+    <section id="messages" class="messages">
+      <div class="welcome">
+        <div class="logo">⚡</div>
+        <h2>Que veux-tu coder ?</h2>
+        <p>Décris ton projet ou colle un problème de code.</p>
+        <div class="examples">
+          <button onclick="useExample('Crée-moi un bouton HTML avec JavaScript')">Créer un bouton</button>
+          <button onclick="useExample('Écris une fonction JavaScript simple')">Écrire une fonction</button>
+          <button onclick="useExample('Corrige ce code')">Corriger du code</button>
+        </div>
+      </div>
+    </section>
+
+    <form id="chatForm" class="composer">
+      <textarea id="prompt" placeholder="Exemple : crée-moi un jeu en JavaScript..." rows="1"></textarea>
+      <button type="submit">➤</button>
+    </form>
+    <small class="disclaimer">Prototype CodeAI — les réponses doivent être vérifiées avant utilisation.</small>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>
