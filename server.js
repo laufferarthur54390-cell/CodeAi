@@ -5,7 +5,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json({ limit: "1mb" }));
-app.use(express.static(path.join(__dirname, "public")));
 
 function generateCode(prompt) {
   const p = String(prompt || "").toLowerCase();
@@ -48,6 +47,17 @@ app.post("/api/chat", (req, res) => {
   if (!prompt || !prompt.trim()) {
     return res.status(400).json({ error: "Écris une demande." });
   }
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/style.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "style.css"));
+});
+
+app.get("/script.js", (req, res) => {
+  res.sendFile(path.join(__dirname, "script.js"));
+});
 
   res.json({
     message: "Voici une première proposition de code :",
@@ -55,10 +65,6 @@ app.post("/api/chat", (req, res) => {
   });
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`CodeAI est lancé sur http://localhost:${PORT}`);
 });
